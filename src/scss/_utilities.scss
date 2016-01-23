@@ -1,0 +1,6 @@
+@mixin absolute($t, $r, $b, $l) {
+  top: $t;
+  right: $r;
+  bottom: $b;
+  left: $l;
+}

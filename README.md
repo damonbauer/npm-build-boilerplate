@@ -1,0 +1,112 @@
+# npm-build-boilerplate
+
+A collection of packages that build a website using `npm scripts`.
+
+* [List of packages used](#list-of-packages-used)
+* [Using in your project](#using-in-your-project)
+* [List of available tasks](#list-of-available-tasks)
+* [Need help?](#need-help)
+
+## List of packages used
+[autoprefixer](https://github.com/postcss/autoprefixer), [browser-sync](https://github.com/Browsersync/browser-sync), [eslint](https://github.com/eslint/eslint), [imagemin-cli](https://github.com/imagemin/imagemin-cli), [node-sass](https://github.com/sass/node-sass), [onchange](https://github.com/Qard/onchange), [parallelshell](https://github.com/keithamus/parallelshell), [postcss-cli](https://github.com/code42day/postcss-cli), [svgo](https://github.com/svg/svgo), [svgshelf](https://github.com/bitinn/svgshelf), [uglify-js](https://github.com/mishoo/UglifyJS2).
+
+Many, many thanks go out to Keith Cirkel for [his post](http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/) and his useful CLI tools!
+
+## Using in your project
+* First, ensure that node.js & npm are both installed. If not, choose your OS and installation method from [this page](https://nodejs.org/en/download/package-manager/) and follow the instructions.
+* Next, use your command line to enter your project directory.
+  * If this a new project (without a `package.json` file), start by running `npm init`. This will ask a few questions and use your responses to build a basic `package.json` file. Next, copy the `"devDependencies"` object into your `package.json`.
+  * If this is an existing project, copy the contents of `"devDependencies"` into your `package.json`.
+* Now, copy any tasks you want from the `"scripts"` object into your `package.json` `"scripts"` object.
+* Finally, run `npm install` to install all of the dependencies into your project.
+
+You're ready to go! Run any task by typing `npm run task` (where "task" is the name of the task in the `"scripts"` object). The most useful task for rapid development is `watch:all`. It will start a new server, open up a browser and watch for any SCSS or JS changes in the `src` directory; once it compiles those changes, the browser will automatically inject the changed file(s)!
+
+## List of available tasks
+### `clean`
+  `rm -f dist/{css/*,js/*,images/*}`
+
+  Delete existing dist files
+
+### `autoprefixer`
+  `postcss -u autoprefixer -r dist/css/*`
+
+  Add vendor prefixes to your CSS automatically
+
+### `scss`
+  `node-sass --output-style compressed -o dist/css src/scss`
+
+  Compile Scss to CSS
+
+### `lint`
+  `eslint src/js`
+
+  "Lint" your JavaScript to enforce a uniform style and find errors
+
+### `concat`
+  `cat src/js/* > dist/js/app.js`
+
+  Combine multiple JavaScript files into one bundle
+
+### `uglify`
+  `uglifyjs dist/js/app.js -m -c > dist/js/app.min.js`
+
+  Uglify (minify) a production ready bundle of JavaScript
+
+### `imagemin`
+  `imagemin src/images dist/images -p`
+
+  Compress all types of images
+
+### `icons`
+  `svgo -f src/images/icons && svgshelf src/images/icons/\*.svg dist/images/icons.svg -p icon-`
+
+  Compress separate SVG files and combine them into one SVG "sprite". Automatically prepends the SVG sprite icons with `icon-` (so `twitter.svg` becomes `<symbol id="icon-twitter"`).
+
+### `serve`
+  `browser-sync start --server --files 'dist/css/*.css, dist/js/*.js'`
+
+  Start a new server and watch for CSS & JS file changes in the `dist` folder
+
+### `build:css`
+  `npm run scss && npm run autoprefixer`
+
+  Alias to run the `scss` and `autoprefixer` tasks. Compiles Scss to CSS & add vendor prefixes
+
+### `build:js`
+  `npm run lint && npm run concat && npm run uglify`
+
+  Alias to run the `lint`, `concat` and `uglify` tasks. Lints JS, combines `src` JS files & uglifies the output
+
+### `build:images`
+  `npm run imagemin && npm run icons`
+
+  Alias to run the `imagemin` and `icons` tasks. Compresses images, generates an SVG sprite from a folder of separate SVGs
+
+### `build:all`
+  `npm run build:css && npm run build:js && npm run build:images`
+
+  Alias to run all of the `build` commands
+
+### `build:watch`
+  `parallelshell 'npm run watch:css' 'npm run watch:js'`
+
+  Runs a command to start `watch:css` and `watch:js`. If a .scss or .js file changes in `src`, it's respective task will run again.
+
+### `watch:css`
+  `onchange 'src/**/*.scss' -- npm run build:css`
+
+  Watches for any .scss file in `src` to change, then runs the `build:css` task.
+
+### `watch:js`
+  `onchange 'src/**/*.js' -- npm run build:js`
+
+  Watches for any .js file in `src` to change, then runs the `build:js` task.
+
+### `watch:all`
+  `parallelshell 'npm run serve' 'npm run build:watch'`
+
+  Start up a new server. Run the `build:watch` task. When a .scss or .js file changes in `src`, the task will compile the changes to `dist`, and the server will be notified of the change. Any browser connected to the server will then inject the new file from `dist`.
+
+## Need help?
+Feel free to [create an issue](http://github.com/damonbauer/npm-build-boilerplate/issues), [tweet me](http://twitter.com/damon_bauer), or [send me an email](mailto:hello@damonbauer.me). I'd be glad to help where I can!
