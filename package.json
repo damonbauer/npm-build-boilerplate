@@ -1,8 +1,9 @@
 {
   "name": "npm-build-boilerplate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A set of common build tasks written with npm scripts.",
   "scripts": {
+    "clean": "rm -f dist/{css/*,js/*,images/*}",
     "autoprefixer": "postcss -u autoprefixer -r dist/css/*",
     "scss": "node-sass --output-style compressed -o dist/css src/scss",
     "lint": "eslint src/js",

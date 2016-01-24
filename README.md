@@ -43,13 +43,8 @@ You're ready to go! Run any task by typing `npm run task` (where "task" is the n
 
   "Lint" your JavaScript to enforce a uniform style and find errors
 
-### `concat`
-  `cat src/js/* > dist/js/app.js`
-
-  Combine multiple JavaScript files into one bundle
-
 ### `uglify`
-  `uglifyjs dist/js/app.js -m -c > dist/js/app.min.js`
+  `mkdir -p dist/js && uglifyjs src/js/*.js -m -o dist/js/app.js && uglifyjs src/js/*.js -m -c -o dist/js/app.min.js`
 
   Uglify (minify) a production ready bundle of JavaScript
 
@@ -88,11 +83,6 @@ You're ready to go! Run any task by typing `npm run task` (where "task" is the n
 
   Alias to run all of the `build` commands
 
-### `build:watch`
-  `parallelshell 'npm run watch:css' 'npm run watch:js'`
-
-  Runs a command to start `watch:css` and `watch:js`. If a .scss or .js file changes in `src`, it's respective task will run again.
-
 ### `watch:css`
   `onchange 'src/**/*.scss' -- npm run build:css`
 
@@ -104,9 +94,15 @@ You're ready to go! Run any task by typing `npm run task` (where "task" is the n
   Watches for any .js file in `src` to change, then runs the `build:js` task.
 
 ### `watch:all`
-  `parallelshell 'npm run serve' 'npm run build:watch'`
+  `parallelshell 'npm run serve' 'npm run watch:css' 'npm run watch:js'`
 
   Start up a new server. Run the `build:watch` task. When a .scss or .js file changes in `src`, the task will compile the changes to `dist`, and the server will be notified of the change. Any browser connected to the server will then inject the new file from `dist`.
+
+### `postinstall`
+  `npm run watch:all`
+
+  Runs `watch:all` after `npm install` is finished.
+
 
 ## Need help?
 Feel free to [create an issue](http://github.com/damonbauer/npm-build-boilerplate/issues), [tweet me](http://twitter.com/damon_bauer), or [send me an email](mailto:hello@damonbauer.me). I'd be glad to help where I can!
