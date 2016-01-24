@@ -1,6 +1,6 @@
 {
   "name": "npm-build-boilerplate",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A set of common build tasks written with npm scripts.",
   "scripts": {
     "clean": "rm -f dist/{css/*,js/*,images/*}",
@@ -9,7 +9,7 @@
     "lint": "eslint src/js",
     "uglify": "mkdir -p dist/js && uglifyjs src/js/*.js -m -o dist/js/app.js && uglifyjs src/js/*.js -m -c -o dist/js/app.min.js",
     "imagemin": "imagemin src/images dist/images -p",
-    "icons": "svgo -f src/images/icons && svgshelf src/images/icons/\\*.svg dist/images/icons.svg -p icon-",
+    "icons": "svgo -f src/images/icons && mkdir -p dist/images && svg-sprite-generate -d src/images/icons -o dist/images/icons.svg",
     "serve": "browser-sync start --server --files 'dist/css/*.css, dist/js/*.js'",
     "build:css": "npm run scss && npm run autoprefixer",
     "build:js": "npm run lint && npm run uglify",
@@ -33,8 +33,8 @@
     "onchange": "^2.0.0",
     "parallelshell": "^2.0.0",
     "postcss-cli": "^2.4.0",
+    "svg-sprite-generator": "0.0.7",
     "svgo": "^0.6.1",
-    "svgshelf": "^1.0.3",
     "uglify-js": "^2.6.1"
   }
 }
