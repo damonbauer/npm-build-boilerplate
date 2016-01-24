@@ -96,7 +96,7 @@ You're ready to go! Run any task by typing `npm run task` (where "task" is the n
 ### `watch:all`
   `parallelshell 'npm run serve' 'npm run watch:css' 'npm run watch:js'`
 
-  Start up a new server. Run the `build:watch` task. When a .scss or .js file changes in `src`, the task will compile the changes to `dist`, and the server will be notified of the change. Any browser connected to the server will then inject the new file from `dist`
+  Run the following tasks simultaneously: `serve`, `watch:css` & `watch:js`. When a .scss or .js file changes in `src`, the task will compile the changes to `dist`, and the server will be notified of the change. Any browser connected to the server will then inject the new file from `dist`
 
 ### `postinstall`
   `npm run watch:all`
