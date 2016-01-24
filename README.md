@@ -54,9 +54,9 @@ You're ready to go! Run any task by typing `npm run task` (where "task" is the n
   Compress all types of images
 
 ### `icons`
-  `svgo -f src/images/icons && svgshelf src/images/icons/\*.svg dist/images/icons.svg -p icon-`
+  `svgo -f src/images/icons && mkdir -p dist/images && svg-sprite-generate -d ./src/images/icons -o ./dist/images/icons.svg`
 
-  Compress separate SVG files and combine them into one SVG "sprite". Automatically prepends the SVG sprite icons with `icon-` (so `twitter.svg` becomes `<symbol id="icon-twitter"`).
+  Compress separate SVG files and combine them into one SVG "sprite"
 
 ### `serve`
   `browser-sync start --server --files 'dist/css/*.css, dist/js/*.js'`
@@ -86,22 +86,22 @@ You're ready to go! Run any task by typing `npm run task` (where "task" is the n
 ### `watch:css`
   `onchange 'src/**/*.scss' -- npm run build:css`
 
-  Watches for any .scss file in `src` to change, then runs the `build:css` task.
+  Watches for any .scss file in `src` to change, then runs the `build:css` task
 
 ### `watch:js`
   `onchange 'src/**/*.js' -- npm run build:js`
 
-  Watches for any .js file in `src` to change, then runs the `build:js` task.
+  Watches for any .js file in `src` to change, then runs the `build:js` task
 
 ### `watch:all`
   `parallelshell 'npm run serve' 'npm run watch:css' 'npm run watch:js'`
 
-  Start up a new server. Run the `build:watch` task. When a .scss or .js file changes in `src`, the task will compile the changes to `dist`, and the server will be notified of the change. Any browser connected to the server will then inject the new file from `dist`.
+  Start up a new server. Run the `build:watch` task. When a .scss or .js file changes in `src`, the task will compile the changes to `dist`, and the server will be notified of the change. Any browser connected to the server will then inject the new file from `dist`
 
 ### `postinstall`
   `npm run watch:all`
 
-  Runs `watch:all` after `npm install` is finished.
+  Runs `watch:all` after `npm install` is finished
 
 
 ## Need help?
