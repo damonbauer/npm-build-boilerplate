@@ -3,8 +3,6 @@
   "version": "1.0.0",
   "description": "A set of common build tasks written with npm scripts.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "rm -f dist/{css/*,js/*,images/*}",
     "autoprefixer": "postcss -u autoprefixer -r dist/css/*",
     "scss": "node-sass --output-style compressed -o dist/css src/scss",
     "lint": "eslint src/js",
@@ -18,8 +16,8 @@
     "build:images": "npm run imagemin && npm run icons",
     "build:all": "npm run build:css && npm run build:js && npm run build:images",
     "build:watch": "parallelshell 'npm run watch:css' 'npm run watch:js'",
-    "watch:css": "onchange 'src/**/*.scss' -- npm run build:css",
-    "watch:js": "onchange 'src/**/*.js' -- npm run build:js",
+    "watch:css": "onchange 'src/scss/*.scss' -- npm run build:css",
+    "watch:js": "onchange 'src/js/*.js' -- npm run build:js",
     "watch:all": "parallelshell 'npm run serve' 'npm run build:watch'",
     "postinstall": "npm run watch:all"
   },
