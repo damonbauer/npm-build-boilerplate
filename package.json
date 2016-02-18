@@ -16,7 +16,7 @@
     "build:js": "npm run lint && npm run uglify",
     "build:images": "npm run imagemin && npm run icons",
     "build:all": "npm run build:css && npm run build:js && npm run build:images",
-    "watch:css": "onchange 'src/scss/*.scss' 'src/index/*.less' -- npm run build:css",
+    "watch:css": "onchange 'src/scss/*.scss' 'src/less/*.less' -- npm run build:css",
     "watch:js": "onchange 'src/js/*.js' -- npm run build:js",
     "watch:all": "parallelshell 'npm run serve' 'npm run watch:css' 'npm run watch:js'",
     "postinstall": "npm run watch:all"
