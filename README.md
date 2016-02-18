@@ -89,7 +89,7 @@ You're ready to go! Run any task by typing `npm run task` (where "task" is the n
   Alias to run all of the `build` commands
 
 ### `watch:css`
-  `onchange 'src/scss/*.scss' 'src/index/*.less' -- npm run build:css`
+  `onchange 'src/scss/*.scss' 'src/less/*.less' -- npm run build:css`
 
   Watches for any .scss file in `src` to change, then runs the `build:css` task
 
