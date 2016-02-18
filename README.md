@@ -38,6 +38,11 @@ You're ready to go! Run any task by typing `npm run task` (where "task" is the n
 
   Compile Scss to CSS
 
+### `less`
+  `for file in src/less/*.less; do lessc --strict-imports $file dist/css/`basename -s .less $file`.css ; done`
+
+  Compile Less to css. If it's some problem, you should install less globally just use `npm install -g less`.
+
 ### `lint`
   `eslint src/js`
 
@@ -59,12 +64,12 @@ You're ready to go! Run any task by typing `npm run task` (where "task" is the n
   Compress separate SVG files and combine them into one SVG "sprite"
 
 ### `serve`
-  `browser-sync start --server --files 'dist/css/*.css, dist/js/*.js'`
+  `browser-sync start --server --files 'dist/css/*.css, dist/js/*.js, *.html, !node_modules/**/*.html'`
 
   Start a new server and watch for CSS & JS file changes in the `dist` folder
 
 ### `build:css`
-  `npm run scss && npm run autoprefixer`
+  `npm run less && npm run scss && npm run autoprefixer`
 
   Alias to run the `scss` and `autoprefixer` tasks. Compiles Scss to CSS & add vendor prefixes
 
@@ -84,7 +89,7 @@ You're ready to go! Run any task by typing `npm run task` (where "task" is the n
   Alias to run all of the `build` commands
 
 ### `watch:css`
-  `onchange 'src/**/*.scss' -- npm run build:css`
+  `onchange 'src/scss/*.scss' 'src/index/*.less' -- npm run build:css`
 
   Watches for any .scss file in `src` to change, then runs the `build:css` task
 
