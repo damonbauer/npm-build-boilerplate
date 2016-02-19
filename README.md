@@ -99,7 +99,7 @@ You're ready to go! Run any task by typing `npm run task` (where "task" is the n
   Run the following tasks simultaneously: `serve`, `watch:css` & `watch:js`. When a .scss or .js file changes in `src`, the task will compile the changes to `dist`, and the server will be notified of the change. Any browser connected to the server will then inject the new file from `dist`
 
 ### `postinstall`
-  `npm run watch:all`
+  `npm run build:all && npm run watch:all`
 
   Runs `watch:all` after `npm install` is finished
 
