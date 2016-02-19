@@ -18,7 +18,7 @@
     "watch:css": "onchange 'src/scss/*.scss' -- npm run build:css",
     "watch:js": "onchange 'src/js/*.js' -- npm run build:js",
     "watch:all": "npm-run-all -p serve watch:css watch:js",
-    "postinstall": "npm run watch:all"
+    "postinstall": "npm run build:all && npm run watch:all"
   },
   "author": "Damon Bauer <hello@damonbauer.me>",
   "license": "MIT",
