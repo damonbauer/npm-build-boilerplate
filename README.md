@@ -59,7 +59,7 @@ You're ready to go! Run any task by typing `npm run task` (where "task" is the n
   Compress separate SVG files and combine them into one SVG "sprite"
 
 ### `serve`
-  `browser-sync start --server --files 'dist/css/*.css, dist/js/*.js'`
+  `browser-sync start --server --files 'dist/css/*.css, dist/js/*.js, **/*.html, !node_modules/**/*.html'`
 
   Start a new server and watch for CSS & JS file changes in the `dist` folder
 
