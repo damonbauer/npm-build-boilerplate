@@ -1,9 +1,10 @@
 {
   "name": "npm-build-boilerplate",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A set of common build tasks written with npm scripts.",
   "scripts": {
-    "clean": "rm -f dist/{css/*,js/*,images/*}",
+    "clean": "rm -f dist/{css/*,js/*,images/*} && rm -f *.html",
+    "pug": "pug --pretty *.pug",
     "autoprefixer": "postcss -u autoprefixer -r dist/css/*",
     "scss": "node-sass --output-style compressed -o dist/css src/scss",
     "lint": "eslint src/js",
@@ -11,13 +12,15 @@
     "imagemin": "imagemin src/images dist/images -p",
     "icons": "svgo -f src/images/icons && mkdir -p dist/images && svg-sprite-generate -d src/images/icons -o dist/images/icons.svg",
     "serve": "browser-sync start --server --files 'dist/css/*.css, dist/js/*.js, **/*.html, !node_modules/**/*.html'",
+    "build:html": "npm run pug",
     "build:css": "npm run scss && npm run autoprefixer",
     "build:js": "npm run lint && npm run uglify",
     "build:images": "npm run imagemin && npm run icons",
-    "build:all": "npm run build:css && npm run build:js && npm run build:images",
+    "build:all": "npm run build:html && npm run build:css && npm run build:js && npm run build:images",
+    "watch:html": "onchange '*.pug' -- npm run build:html",
     "watch:css": "onchange 'src/scss/*.scss' -- npm run build:css",
     "watch:js": "onchange 'src/js/*.js' -- npm run build:js",
-    "watch:all": "npm-run-all -p serve watch:css watch:js",
+    "watch:all": "npm-run-all -p serve watch:html watch:css watch:js",
     "postinstall": "npm run build:all && npm run watch:all"
   },
   "author": "Damon Bauer <hello@damonbauer.me>",
@@ -33,6 +36,7 @@
     "npm-run-all": "^1.5.1",
     "onchange": "^2.0.0",
     "postcss-cli": "^2.4.0",
+    "pug-cli": "^1.0.0-alpha1",
     "svg-sprite-generator": "0.0.7",
     "svgo": "^0.6.1",
     "uglify-js": "^2.6.1"
