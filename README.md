@@ -93,6 +93,11 @@ You're ready to go! Run any task by typing `npm run task` (where "task" is the n
 
   Watches for any .js file in `src` to change, then runs the `build:js` task
 
+### `watch:images`
+  `onchange 'src/images/**/*' -- npm run build:images`
+
+  Watches for any images in `src` to change, then runs the `build:images` task
+
 ### `watch:all`
   `npm-run-all -p serve watch:css watch:js`
 
