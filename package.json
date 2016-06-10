@@ -1,7 +1,15 @@
 {
   "name": "npm-build-boilerplate",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A set of common build tasks written with npm scripts.",
+  "author": "Damon Bauer <hello@damonbauer.me>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/damonbauer/npm-build-boilerplate"
+  },
+  "bugs": "https://github.com/damonbauer/npm-build-boilerplate/issues",
+  "keywords": ["npm", "scripts", "npm scripts", "watch", "minify", "compress"],
   "scripts": {
     "clean": "rm -f dist/{css/*,js/*,images/*}",
     "autoprefixer": "postcss -u autoprefixer -r dist/css/*",
@@ -15,14 +23,12 @@
     "build:js": "npm run lint && npm run uglify",
     "build:images": "npm run imagemin && npm run icons",
     "build:all": "npm run build:css && npm run build:js && npm run build:images",
-    "watch:css": "onchange 'src/scss/**/*.scss' -- npm run build:css",
-    "watch:js": "onchange 'src/js/**/*.js' -- npm run build:js",
-    "watch:images": "onchange 'src/images/**/*' -- npm run build:images",
+    "watch:css": "onchange 'src/scss' -- npm run build:css",
+    "watch:js": "onchange 'src/js' -- npm run build:js",
+    "watch:images": "onchange 'src/images' -- npm run build:images",
     "watch:all": "npm-run-all -p serve watch:css watch:js watch:images",
     "postinstall": "npm run build:all && npm run watch:all"
   },
-  "author": "Damon Bauer <hello@damonbauer.me>",
-  "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^6.3.6",
     "browser-sync": "^2.12.8",
