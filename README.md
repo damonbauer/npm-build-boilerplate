@@ -49,7 +49,7 @@ You're ready to go! Run any task by typing `npm run task` (where "task" is the n
   Uglify (minify) a production ready bundle of JavaScript
 
 ### `imagemin`
-  `imagemin src/images dist/images -p`
+  `imagemin src/images/* -o dist/images`
 
   Compress all types of images
 
