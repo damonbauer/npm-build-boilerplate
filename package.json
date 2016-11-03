@@ -18,7 +18,7 @@
     "compress"
   ],
   "scripts": {
-    "clean": "rm -f dist/{css/*,js/*,images/*}",
+    "clean": "rimraf dist/{css/*,js/*,images/*}",
     "autoprefixer": "postcss -u autoprefixer -r dist/css/*",
     "scss": "node-sass --output-style compressed -o dist/css src/scss",
     "lint": "eslint src/js",
@@ -49,6 +49,7 @@
     "npm-run-all": "^2.1.1",
     "onchange": "^2.4.0",
     "postcss-cli": "^2.5.2",
+    "rimraf": "^2.5.4",
     "svg-sprite-generator": "0.0.7",
     "svgo": "^0.6.6",
     "uglify-js": "^2.6.2"
