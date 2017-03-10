@@ -23,6 +23,7 @@
     "scss": "node-sass --output-style compressed -o dist/css src/scss",
     "lint": "eslint src/js || true",
     "lint-scss": "stylelint src/scss/*.scss --syntax scss || true",
+    "uglify": "mkdirp dist/js -p && uglifyjs src/js/*.js -m -o dist/js/app.js && uglifyjs src/js/*.js -m -c -o dist/js/app.min.js",
     "imagemin": "imagemin src/images/* -o dist/images",
     "icons": "svgo -f src/images/icons -o dist/images/icons && svg-sprite-generate -d dist/images/icons -o dist/images/icons/sprite.svg",
     "serve": "browser-sync start --server --files \"dist/css/*.css, dist/js/*.js, **/*.html, !node_modules/**/*.html\"",
