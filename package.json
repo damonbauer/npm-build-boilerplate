@@ -35,7 +35,7 @@
     "watch:js": "onchange \"src/js\" -- run-s build:js",
     "watch:images": "onchange \"src/images\" -- run-s build:images",
     "watch": "run-p serve watch:*",
-    "postinstall": "run-s build:all watch:all"
+    "postinstall": "run-s build watch"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",

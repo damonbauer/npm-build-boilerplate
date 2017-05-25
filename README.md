@@ -20,7 +20,7 @@ Many, many thanks go out to Keith Cirkel for [his post](http://blog.keithcirkel.
 * Now, copy any tasks you want from the `"scripts"` object into your `package.json` `"scripts"` object.
 * Finally, run `npm install` to install all of the dependencies into your project.
 
-You're ready to go! Run any task by typing `npm run task` (where "task" is the name of the task in the `"scripts"` object). The most useful task for rapid development is `watch:all`. It will start a new server, open up a browser and watch for any SCSS or JS changes in the `src` directory; once it compiles those changes, the browser will automatically inject the changed file(s)!
+You're ready to go! Run any task by typing `npm run task` (where "task" is the name of the task in the `"scripts"` object). The most useful task for rapid development is `watch`. It will start a new server, open up a browser and watch for any SCSS or JS changes in the `src` directory; once it compiles those changes, the browser will automatically inject the changed file(s)!
 
 ## List of available tasks
 ### `clean`
@@ -64,49 +64,49 @@ You're ready to go! Run any task by typing `npm run task` (where "task" is the n
   Start a new server and watch for CSS & JS file changes in the `dist` folder
 
 ### `build:css`
-  `npm run scss && npm run autoprefixer`
+  `run-s scss autoprefixer`
 
   Alias to run the `scss` and `autoprefixer` tasks. Compiles Scss to CSS & add vendor prefixes
 
 ### `build:js`
-  `npm run lint && npm run concat && npm run uglify`
+  `run-s lint concat uglify`
 
   Alias to run the `lint`, `concat` and `uglify` tasks. Lints JS, combines `src` JS files & uglifies the output
 
 ### `build:images`
-  `npm run imagemin && npm run icons`
+  `run-s imagemin icons`
 
   Alias to run the `imagemin` and `icons` tasks. Compresses images, generates an SVG sprite from a folder of separate SVGs
 
-### `build:all`
-  `npm run build:css && npm run build:js && npm run build:images`
+### `build`
+  `run-s build:*`
 
   Alias to run all of the `build` commands
 
 ### `watch:css`
-  `onchange 'src/**/*.scss' -- npm run build:css`
+  `onchange 'src/**/*.scss' -- run-s build:css`
 
   Watches for any .scss file in `src` to change, then runs the `build:css` task
 
 ### `watch:js`
-  `onchange 'src/**/*.js' -- npm run build:js`
+  `onchange 'src/**/*.js' -- run-s build:js`
 
   Watches for any .js file in `src` to change, then runs the `build:js` task
 
 ### `watch:images`
-  `onchange 'src/images/**/*' -- npm run build:images`
+  `onchange 'src/images/**/*' -- run-s build:images`
 
   Watches for any images in `src` to change, then runs the `build:images` task
 
-### `watch:all`
-  `npm-run-all -p serve watch:css watch:js watch:images`
+### `watch`
+  `run-p serve watch:*`
 
   Run the following tasks simultaneously: `serve`, `watch:css`, `watch:js` & `watch:images`. When a .scss or .js file changes in `src` or an image changes in `src/images`, the task will compile the changes to `dist`, and the server will be notified of the change. Any browser connected to the server will then inject the new file from `dist`
 
 ### `postinstall`
-  `npm run build:all && npm run watch:all`
+  `run-s build watch`
 
-  Runs `watch:all` after `npm install` is finished
+  Runs `watch` after `npm install` is finished
 
 
 ## Need help?
