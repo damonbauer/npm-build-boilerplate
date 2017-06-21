@@ -1,0 +1,39 @@
+doctype html
+html(lang="en")
+    head        
+        block metas
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(http-equiv="Content-Type", content="text/html; charset=UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no")
+        //- Robots : http://www.robotstxt.org/meta.html
+        meta(name="robots", content="all")
+        //- Meta defined by MDN : https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/The_head_metadata_in_HTML
+        meta(name="author", content="Tej Kahlon")
+        meta(name="description", content=siteDescription)
+        //- Meta defined for Facebook Open Graph Data (OG)
+        meta(property="og:image", content="icons/android-chrome-512x512.png")
+        meta(property="og:description", content=facebookDescription)
+        meta(property="og:title", content=facebookTitle)
+        //- Title
+        block title
+        //- Styles
+        link(rel="stylesheet", href="css/fonts.css", media="screen")
+        link(rel="stylesheet", href="css/bootstrap.css", media="screen")
+        link(rel="stylesheet", href="css/vendor/bootstrap-select.min.css", media="screen")
+        link(rel="stylesheet", href="css/style.css", media="screen")
+        <!--[if lt IE 9]>
+        script(src="js/vendor/html5shiv.min.js")        
+        script(src="js/vendor/respond.min.js")
+        <![endif]-->        
+    block vars
+    body(class=bodyClass)
+        block content             
+        script(src="http://cdnjs.cloudflare.com/ajax/libs/html-inspector/0.8.2/html-inspector.js")   
+        script(src="js/vendor/jquery.min.js")
+        script(src="js/vendor/bootstrap.min.js")
+        script(src="js/vendor/bootstrap-select.min.js")
+        script(src="js/vendor/bootstrap-fixes.js")
+        script(src="js/custom.js")        
+        script(type="text/javascript")
+            | HTMLInspector.inspect()

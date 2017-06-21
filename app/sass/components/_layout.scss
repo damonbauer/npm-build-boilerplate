@@ -1,0 +1,42 @@
+// LAYOUT.scss
+// Declare responsive grid structure here
+
+// HTML, BODY
+html {
+  font-size: 16px;
+}
+
+// BODY
+body {
+  font-family: "Roboto", sans-serif;
+  line-height: normal;
+  color: $primary-color;
+  background-color: $white;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// .CONTAINER
+.container {
+  @include container-fixed();
+  @media (min-width: $screen-sm-min) {
+    width: $container-sm;
+  }
+  @media (min-width: $screen-md-min) {
+    width: $container-md;
+  }
+  @media (min-width: $screen-lg-min) {
+    width: $container-lg;
+  }
+}
+
+// RESPONSIVE MEDIA
+img, 
+embed,
+object,
+video {
+  max-width: 100%;
+}
