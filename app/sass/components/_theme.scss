@@ -1,0 +1,6 @@
+// THEME.scss
+
+button {
+  @extend %button;
+  @include font-size(14);
+}

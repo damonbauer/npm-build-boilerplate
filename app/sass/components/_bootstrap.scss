@@ -1,0 +1,6 @@
+// BOOTSTRAP.scss
+// Overrides BOOTSTRAP variables
+
+$brand-primary: $primary-color !default;
+$font-family-sans-serif: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$icon-font-path: 'if($bootstrap-sass-asset-helper, "bootstrap/", "../fonts/") !default';

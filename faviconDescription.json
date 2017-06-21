@@ -1,0 +1,55 @@
+{
+	"masterPicture": "app/images/master_picture.png",
+	"iconsPath": "icons",
+	"design": {
+		"ios": {
+			"pictureAspect": "noChange",
+			"assets": {
+				"ios6AndPriorIcons": true,
+				"ios7AndLaterIcons": true,
+				"precomposedIcons": true,
+				"declareOnlyDefaultIcon": true
+			}
+		},
+		"desktopBrowser": {},
+		"windows": {
+			"pictureAspect": "noChange",
+			"backgroundColor": "#ffffff",
+			"onConflict": "override",
+			"assets": {
+				"windows80Ie10Tile": true,
+				"windows10Ie11EdgeTiles": {
+					"small": true,
+					"medium": true,
+					"big": true,
+					"rectangle": true
+				}
+			}
+		},
+		"androidChrome": {
+			"pictureAspect": "shadow",
+			"themeColor": "#ffffff",
+			"manifest": {
+				"name": "npm-app",
+				"display": "standalone",
+				"orientation": "notSet",
+				"onConflict": "override",
+				"declared": true
+			},
+			"assets": {
+				"legacyIcon": true,
+				"lowResolutionIcons": true
+			}
+		},
+		"safariPinnedTab": {
+			"pictureAspect": "blackAndWhite",
+			"threshold": 95,
+			"themeColor": "#777777"
+		}
+	},
+	"settings": {
+		"compression": 1,
+		"scalingAlgorithm": "Mitchell",
+		"errorOnImageTooSmall": false
+	}
+}
