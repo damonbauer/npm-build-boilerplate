@@ -31,7 +31,9 @@
     "build:js": "run-s lint uglify",
     "build:images": "run-s imagemin icons",
     "build": "run-s build:*",
+    "copy:fonts": "copyfiles -f src/fonts/*.woff2 dist/fonts",
     "watch:css": "onchange \"src/scss\" -- run-s build:css",
+    "watch:fonts": "onchange \"src/fonts\" -- npm run copy:fonts",
     "watch:js": "onchange \"src/js\" -- run-s build:js",
     "watch:images": "onchange \"src/images\" -- run-s build:images",
     "watch": "run-p serve watch:*",
@@ -40,6 +42,7 @@
   "devDependencies": {
     "autoprefixer": "^6.3.6",
     "browser-sync": "^2.12.8",
+    "copyfiles": "^1.2.0",
     "eslint": "^2.10.2",
     "eslint-config-standard": "^5.3.1",
     "eslint-plugin-promise": "^1.3.0",
